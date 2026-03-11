@@ -179,33 +179,38 @@ def check_junction_temperature():
 
 def check_chf_enhancement():
     """
-    Verify CHF enhancement ratio > 10x vs Novec 7100.
+    Verify CHF enhancement (three framings) vs Novec 7100.
 
-    The Genesis system achieves a maximum stable flux of 200 W/cm^2
-    (T_max = 82.8 C, below the 85 C server threshold).
+    CORRECTED (Feb 2026 audit): The previous "11.0x" claim compared Genesis
+    flow boiling against Novec 7100 pool boiling CHF -- apples-to-oranges.
 
-    CHF_enhancement = Genesis_max_flux / Novec_7100_CHF
-                    = 200 / 18.2
-                    = 11.0x
+    Three honest framings:
+      Pool-to-pool:  Genesis pool vs Novec pool        = ~1.6x
+      Flow-to-flow:  Genesis Marangoni vs forced conv   = 1.6-2.4x
+      System-level:  Pumpless Genesis 133 W/cm^2 vs
+                     pumpless Novec 18.2 W/cm^2         = ~7x
     """
-    genesis_max_flux = 200.0  # W/cm^2 (max stable, T < 85 C)
-    novec_chf = NOVEC_7100_CHF  # W/cm^2
+    genesis_operating_flux = 133.0  # W/cm^2 (B200 operating point)
+    novec_pool_chf = NOVEC_7100_CHF  # W/cm^2 (18.2)
 
-    ratio = genesis_max_flux / novec_chf
+    system_ratio = genesis_operating_flux / novec_pool_chf  # ~7.3x
 
-    passed = ratio > 10.0
+    passed = system_ratio > 5.0  # System-level advantage > 5x
     return {
-        "check": "CHF Enhancement Ratio",
-        "description": "Enhancement = Genesis_max_flux / Novec_7100_CHF",
-        "calculated": round(ratio, 1),
-        "threshold": "> 10x",
-        "reference": 11.0,
+        "check": "CHF Enhancement (Three Framings)",
+        "description": "System-level = Genesis_operating_flux / Novec_pool_CHF",
+        "calculated": round(system_ratio, 1),
+        "threshold": "> 5x system-level",
+        "reference": "~7x system-level; 1.6x pool-to-pool; 1.6-2.4x flow-to-flow",
         "passed": passed,
         "details": {
-            "genesis_max_flux_W_cm2": genesis_max_flux,
-            "novec_7100_chf_W_cm2": novec_chf,
-            "genesis_T_at_max_flux_C": 82.8,
+            "genesis_operating_flux_W_cm2": genesis_operating_flux,
+            "novec_pool_chf_W_cm2": novec_pool_chf,
+            "genesis_T_at_operating_C": 68.9,
+            "marginal_boundary_W_cm2": 200.0,
+            "marginal_boundary_T_C": 82.8,
             "threshold_C": 85.0,
+            "note": "Previous 11.0x was apples-to-oranges (flow vs pool)",
         },
     }
 

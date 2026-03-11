@@ -84,17 +84,17 @@ using published fluid properties. Any value above approximately 2 million confir
 
 **To verify independently:** Look up the surface tension temperature coefficient for fluorinated amine / HFO mixtures in the published literature. The value of -0.00012 N/m-K is consistent with measurements of similar fluorinated binary systems.
 
-### Check 2: CHF Enhancement (> 10x)
+### Check 2: CHF Enhancement (Three Framings)
 
-This is a straightforward ratio:
+**CORRECTED (Feb 2026 audit):** The previous "11.0x" claim compared Genesis flow boiling against Novec 7100 pool boiling -- an apples-to-oranges comparison. The honest comparison depends on which framing is used:
 
 ```
-Enhancement = 200 W/cm^2 / 18.2 W/cm^2 = 11.0x
+Pool-to-pool:    Genesis pumpless pool vs Novec pool           = ~1.6x
+Flow-to-flow:    Genesis Marangoni flow vs conventional forced  = 1.6-2.4x
+System-level:    Pumpless Genesis 133 W/cm^2 vs pumpless Novec 18.2 W/cm^2 = ~7x
 ```
 
-The denominator (18.2 W/cm^2) is the published pool boiling CHF for Novec 7100, which can be found in 3M's product data sheets and multiple peer-reviewed publications.
-
-The numerator (200 W/cm^2) is the maximum heat flux at which the Genesis system remains below 85 degrees C, as determined by the canonical solver.
+The system-level ~7x reflects that Genesis can handle 133 W/cm^2 with no pump while Novec 7100 pool boiling saturates at 18.2 W/cm^2. The primary value is self-pumping (no mechanical pump) and dielectric safety.
 
 ### Check 3: Junction Temperature (< 75 degrees C at 133 W/cm^2)
 

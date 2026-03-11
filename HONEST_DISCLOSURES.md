@@ -20,7 +20,7 @@ All results presented in this repository are from computational simulations. No 
 | Surface tension temperature coefficient (-0.00012 N/m-K) | OpenFOAM v2406 interFoam VOF transport properties | High |
 | Junction temperature at 133 W/cm-squared (68.9 degrees C) | 1D finite-difference solver (50 nodes, converged) | Medium-High |
 | Self-pumping velocity (0.15-0.24 m/s) | Marangoni stress balance calculation | Medium |
-| CHF enhancement (11.0x vs Novec 7100) | Comparison of max stable flux (200 W/cm-squared) to literature CHF (18.2 W/cm-squared) | Medium |
+| CHF comparison (~7x system-level, 1.6x pool-to-pool, 1.6-2.4x flow-to-flow) | Three-framing comparison vs Novec 7100; previous 11.0x was apples-to-oranges | Medium |
 | Thermal stress reduction (8x via NeuralValve) | CalculiX v2.22 FEA (SS316L, 10,215 nodes) | High |
 | Monte Carlo robustness (100/100 stable) | 100 runs with +/-5% property variation | High |
 | Zero-G penalty (3.5 degrees C) | Bond number analysis + modified solver | Medium |
@@ -31,7 +31,7 @@ All results presented in this repository are from computational simulations. No 
 
 ### 1. No Physical Prototype
 
-No Genesis cold plate has been fabricated. No experimental CHF measurement has been performed. The 11.0x CHF enhancement is a computational prediction based on the 1D solver's maximum stable operating point compared to published Novec 7100 pool boiling data. A physical CHF experiment (estimated cost: $30,000) is the critical de-risking step.
+No Genesis cold plate has been fabricated. No experimental CHF measurement has been performed. The ~7x system-level advantage and 1.6x pool-to-pool enhancement are computational predictions. The previous "11.0x" claim compared Genesis flow boiling against Novec 7100 pool boiling -- an apples-to-oranges comparison that has been corrected. A physical CHF experiment (estimated cost: $30,000) is the critical de-risking step.
 
 ### 2. Simplified Physics Model
 
@@ -85,11 +85,11 @@ The following assumptions underlie the computational results:
 | Experiment | Cost | Impact |
 |:---|:---|:---|
 | Benchtop flow visualization | $2,000 | Visual proof of Marangoni flow direction |
-| Pool boiling CHF measurement | $30,000 | Confirms or refutes 11.0x enhancement claim |
+| Pool boiling CHF measurement | $30,000 | Confirms or refutes ~7x system-level enhancement claim |
 | 1000-hour fluid stability test | $30,000 | Validates long-term chemical compatibility |
 | Cold plate prototype and test | $15,000 | Validates manufacturing feasibility |
 
-The $30,000 CHF experiment is the single most important de-risking step. Any result above 100 W/cm-squared (5.5x enhancement) validates the core physics. The claimed 200 W/cm-squared (11.0x) is the simulation prediction.
+The $30,000 CHF experiment is the single most important de-risking step. Any result above 100 W/cm-squared validates the core physics. The marginal stability boundary of 200 W/cm-squared (~7x system-level) is the simulation prediction; the robust stable point is 175 W/cm-squared.
 
 ---
 

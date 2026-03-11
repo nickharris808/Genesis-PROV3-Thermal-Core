@@ -149,7 +149,7 @@ The classical Zuber correlation for pool boiling CHF provides a physics-based re
 q_CHF = 0.131 * h_fg * rho_v * [sigma * g * (rho_l - rho_v) / rho_v^2]^(1/4)
 ```
 
-For Novec 7100, this yields approximately 18.2 W/cm^2, consistent with published experimental data. The Genesis system exceeds this by 11.0x through Marangoni-enhanced flow and boiling.
+For Novec 7100, this yields approximately 18.2 W/cm^2, consistent with published experimental data. The Genesis system comparison depends on framing: ~1.6x pool-to-pool, 1.6-2.4x flow-to-flow, or ~7x system-level (pumpless Genesis 133 W/cm^2 vs pumpless Novec 18.2 W/cm^2). The previous "11.0x" claim was an apples-to-oranges comparison against pool boiling CHF.
 
 ---
 
