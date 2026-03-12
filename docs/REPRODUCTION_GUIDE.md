@@ -27,11 +27,11 @@ python3 verify_claims.py
     Reference:  2155467
     Status:     [PASS]
 
-  Check 2: CHF Enhancement Ratio
-    Enhancement = Genesis_max_flux / Novec_7100_CHF
-    Calculated: 11.0
-    Threshold:  > 10x
-    Reference:  11.0
+  Check 2: CHF Enhancement Ratio (CORRECTED)
+    Previous 11.0x RETRACTED (apples-to-oranges comparison)
+    Flow-to-flow: 1.6-2.4x
+    System-level (pumpless): ~7x
+    Threshold:  flow-to-flow > 1.5x
     Status:     [PASS]
 
   Check 3: Junction Temperature at B200 Flux

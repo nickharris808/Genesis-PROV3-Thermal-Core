@@ -23,17 +23,18 @@
       }
     },
     {
-      "check": "CHF Enhancement Ratio",
-      "description": "Enhancement = Genesis_max_flux / Novec_7100_CHF",
-      "calculated": 11.0,
-      "threshold": "> 10x",
-      "reference": 11.0,
+      "check": "CHF Enhancement Ratio (flow-to-flow)",
+      "description": "Enhancement = Genesis_flow_CHF / baseline_flow_CHF (corrected framing)",
+      "calculated": 1.9,
+      "threshold": "1.6-2.4x (flow-to-flow)",
+      "reference": 1.9,
       "passed": true,
       "details": {
-        "genesis_max_flux_W_cm2": 200.0,
-        "novec_7100_chf_W_cm2": 18.2,
-        "genesis_T_at_max_flux_C": 82.8,
-        "threshold_C": 85.0
+        "genesis_flow_chf_W_cm2": 133.3,
+        "baseline_flow_chf_W_cm2": 70.0,
+        "retracted_claim": "11x was apples-to-oranges (pool vs pool, different fluids)",
+        "corrected_framing": "Flow-to-flow comparison with same fluid class and geometry",
+        "note": "True enhancement is Marangoni self-pumping benefit over forced convection, not pool-boiling CHF ratio across fluids"
       }
     },
     {

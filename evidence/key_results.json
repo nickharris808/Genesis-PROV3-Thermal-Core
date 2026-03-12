@@ -76,7 +76,9 @@
       "pump_required": false,
       "zero_g_capable": true,
       "gwp": 2,
-      "chf_enhancement": 11.0
+      "chf_enhancement_RETRACTED": "11.0x RETRACTED (apples-to-oranges: flow boiling vs pool boiling)",
+      "chf_enhancement_flow_to_flow": "1.6-2.4x",
+      "chf_enhancement_system_level_pumpless": "~7x (pumpless 133 W/cm2 vs pumpless Novec 18.2 W/cm2)"
     },
     {
       "technology": "Novec 7100 (pool boiling)",
