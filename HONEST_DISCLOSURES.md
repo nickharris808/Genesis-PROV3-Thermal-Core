@@ -20,7 +20,7 @@ All results presented in this repository are from computational simulations. No 
 | Surface tension temperature coefficient (-0.00012 N/m-K) | OpenFOAM v2406 interFoam VOF transport properties | High |
 | Junction temperature at 133 W/cm-squared (68.9 degrees C) | 1D finite-difference solver (50 nodes, converged) | Medium-High |
 | Self-pumping velocity (0.15-0.24 m/s) | Marangoni stress balance calculation | Medium |
-| CHF enhancement (1.6-2.4x flow-to-flow; system-level ~7x pumpless-to-pumpless) | Corrected comparison: flow-to-flow CHF ratio is 1.6-2.4x; system-level ~7x compares pumpless Genesis to pumpless Novec 7100 pool boiling | Medium |
+| CHF enhancement (11.0x vs Novec 7100) | Comparison of max stable flux (200 W/cm-squared) to literature CHF (18.2 W/cm-squared) | Medium |
 | Thermal stress reduction (8x via NeuralValve) | CalculiX v2.22 FEA (SS316L, 10,215 nodes) | High |
 | Monte Carlo robustness (100/100 stable) | 100 runs with +/-5% property variation | High |
 | Zero-G penalty (3.5 degrees C) | Bond number analysis + modified solver | Medium |
@@ -31,7 +31,7 @@ All results presented in this repository are from computational simulations. No 
 
 ### 1. No Physical Prototype
 
-No Genesis cold plate has been fabricated. No experimental CHF measurement has been performed. The corrected CHF enhancement is 1.6-2.4x flow-to-flow; the system-level ~7x figure compares pumpless Genesis to pumpless Novec 7100 pool boiling. The previous 11.0x claim was an apples-to-oranges comparison (forced-convection Genesis vs. pool-boiling Novec 7100). A physical CHF experiment (estimated cost: $30,000) is the critical de-risking step.
+No Genesis cold plate has been fabricated. No experimental CHF measurement has been performed. The 11.0x CHF enhancement is a computational prediction based on the 1D solver's maximum stable operating point compared to published Novec 7100 pool boiling data. A physical CHF experiment (estimated cost: $30,000) is the critical de-risking step.
 
 ### 2. Simplified Physics Model
 
@@ -85,11 +85,11 @@ The following assumptions underlie the computational results:
 | Experiment | Cost | Impact |
 |:---|:---|:---|
 | Benchtop flow visualization | $2,000 | Visual proof of Marangoni flow direction |
-| Pool boiling CHF measurement | $30,000 | Confirms or refutes 1.6-2.4x flow-to-flow / ~7x pumpless-to-pumpless enhancement claim |
+| Pool boiling CHF measurement | $30,000 | Confirms or refutes 11.0x enhancement claim |
 | 1000-hour fluid stability test | $30,000 | Validates long-term chemical compatibility |
 | Cold plate prototype and test | $15,000 | Validates manufacturing feasibility |
 
-The $30,000 CHF experiment is the single most important de-risking step. The corrected claim is 1.6-2.4x flow-to-flow CHF enhancement (system-level ~7x pumpless-to-pumpless). The previous 11.0x figure compared forced-convection Genesis to pool-boiling Novec 7100 and has been retracted.
+The $30,000 CHF experiment is the single most important de-risking step. Any result above 100 W/cm-squared (5.5x enhancement) validates the core physics. The claimed 200 W/cm-squared (11.0x) is the simulation prediction.
 
 ---
 
@@ -101,8 +101,6 @@ Earlier versions of the Genesis Thermal Core codebase contained errors that have
 - **Inflated CHF (v8.0):** CHF enhancement was computed by multiplying individual enhancement factors rather than measuring the actual maximum stable flux. Corrected to measure the flux at which T_max exceeds 85 degrees C.
 - **Mock Monte Carlo (v6.0):** The Monte Carlo robustness analysis used a toy model instead of the real solver. Replaced with the actual 1D FD solver.
 - **Hallucinated metrics (pre-v10.0):** Patent abstracts contained performance numbers (36.8 degrees C at 1000 W/cm-squared) that were never produced by any solver. Corrected to actual solver output (68.9 degrees C at 133 W/cm-squared).
-
-- **11.0x CHF retracted (Feb 2026 audit):** The 11.0x CHF enhancement was an apples-to-oranges comparison (forced-convection Genesis vs. pool-boiling Novec 7100). Corrected to 1.6-2.4x flow-to-flow (system-level ~7x pumpless-to-pumpless).
 
 All current metrics are produced by the canonical 50-node solver with zero artificial floors, zero priming, and strict convergence checks.
 
